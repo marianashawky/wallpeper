@@ -171,16 +171,16 @@ final List<Wallpaper> wallpaperCatalog = [
   _w(id: 'stadium_009', title: 'Tunnel Walk', category: WallpaperCategory.stadiums, subject: 'Tunnel', imagePath: '$_p/stadiums/stadium_009.jpg', tags: ['stadiums', 'tunnel'], subtitle: 'Into the Light', downloads: 17000, likes: 4000, views: 64000),
   _w(id: 'stadium_010', title: 'Midnight Match', category: WallpaperCategory.championsLeague, subject: 'Pitch Night', imagePath: '$_p/stadiums/stadium_010.jpg', tags: ['champions league', 'midnight', 'minimal'], subtitle: 'Emerald Field', trending: true, downloads: 19000, likes: 4500, views: 72000),
 
-  _w(id: 'football_3d_001', title: 'UCL Trophy', category: WallpaperCategory.championsLeague, subject: 'Champions League', imagePath: '$_p/3d/football_3d_001.jpg', tags: ['3d', 'champions league', 'trophy', 'ucl'], subtitle: 'The Cup', featured: true, trending: true, downloads: 77000, likes: 17100, views: 312000),
-  _w(id: 'football_3d_002', title: 'World Cup', category: WallpaperCategory.leagues, subject: 'World Cup', imagePath: '$_p/3d/football_3d_002.jpg', tags: ['3d', 'world cup', 'trophy', 'final'], subtitle: 'The Greatest Prize', trending: true, downloads: 65000, likes: 15000, views: 280000),
-  _w(id: 'football_3d_003', title: 'EURO Trophy', category: WallpaperCategory.leagues, subject: 'European Championship', imagePath: '$_p/3d/football_3d_003.jpg', tags: ['3d', 'euros', 'trophy', 'uefa'], subtitle: 'Nations of Europe', downloads: 28000, likes: 7200, views: 119000),
-  _w(id: 'football_3d_004', title: 'Goal', category: WallpaperCategory.art3d, subject: 'Goal Net', imagePath: '$_p/3d/football_3d_004.jpg', tags: ['3d', 'goal', 'net', 'moment'], subtitle: 'Ball in the Net', downloads: 22000, likes: 5400, views: 88000),
-  _w(id: 'football_3d_005', title: 'Penalty', category: WallpaperCategory.art3d, subject: 'Penalty Spot', imagePath: '$_p/3d/football_3d_005.jpg', tags: ['3d', 'penalty', 'spot'], subtitle: 'The Spot', downloads: 18000, likes: 4300, views: 71000),
-  _w(id: 'football_3d_006', title: 'Captain', category: WallpaperCategory.art3d, subject: 'Captain Armband', imagePath: '$_p/3d/football_3d_006.jpg', tags: ['3d', 'captain', 'armband'], subtitle: 'The Armband', downloads: 14000, likes: 3300, views: 54000),
-  _w(id: 'football_3d_007', title: 'Final Night', category: WallpaperCategory.championsLeague, subject: 'UCL Final', imagePath: '$_p/3d/football_3d_007.jpg', tags: ['3d', 'champions league', 'final'], subtitle: 'European Glory', downloads: 26000, likes: 6100, views: 99000),
-  _w(id: 'football_3d_008', title: 'World Champions', category: WallpaperCategory.leagues, subject: 'World Cup Final', imagePath: '$_p/3d/football_3d_008.jpg', tags: ['3d', 'world cup', 'final'], subtitle: 'Final Whistle', downloads: 24000, likes: 5800, views: 92000),
-  _w(id: 'football_3d_009', title: 'Top Corner', category: WallpaperCategory.art3d, subject: 'Goal', imagePath: '$_p/3d/football_3d_009.jpg', tags: ['3d', 'goal', 'strike'], subtitle: 'Unstoppable', downloads: 16000, likes: 3900, views: 63000),
-  _w(id: 'football_3d_010', title: 'Last Kick', category: WallpaperCategory.minimal, subject: 'Penalty', imagePath: '$_p/3d/football_3d_010.jpg', tags: ['3d', 'penalty', 'minimal'], subtitle: 'Sudden Death', trending: true, downloads: 15000, likes: 3600, views: 58000),
+  _w(id: 'football_3d_001', title: 'UCL Trophy', category: WallpaperCategory.art3d, subject: 'Champions League', imagePath: '$_p/3d/football_3d_001.jpg', tags: ['live', 'animated', '3d', 'champions league', 'trophy', 'ucl'], subtitle: 'The Cup', featured: true, trending: true, downloads: 77000, likes: 17100, views: 312000),
+  _w(id: 'football_3d_002', title: 'World Cup', category: WallpaperCategory.art3d, subject: 'World Cup', imagePath: '$_p/3d/football_3d_002.jpg', tags: ['live', 'animated', '3d', 'world cup', 'trophy', 'final'], subtitle: 'The Greatest Prize', trending: true, downloads: 65000, likes: 15000, views: 280000),
+  _w(id: 'football_3d_003', title: 'EURO Trophy', category: WallpaperCategory.art3d, subject: 'European Championship', imagePath: '$_p/3d/football_3d_003.jpg', tags: ['live', 'animated', '3d', 'euros', 'trophy', 'uefa'], subtitle: 'Nations of Europe', downloads: 28000, likes: 7200, views: 119000),
+  _w(id: 'football_3d_004', title: 'Goal', category: WallpaperCategory.art3d, subject: 'Goal Net', imagePath: '$_p/3d/football_3d_004.jpg', tags: ['live', 'animated', '3d', 'goal', 'net', 'moment'], subtitle: 'Ball in the Net', downloads: 22000, likes: 5400, views: 88000),
+  _w(id: 'football_3d_005', title: 'Penalty', category: WallpaperCategory.art3d, subject: 'Penalty Spot', imagePath: '$_p/3d/football_3d_005.jpg', tags: ['live', 'animated', '3d', 'penalty', 'spot'], subtitle: 'The Spot', downloads: 18000, likes: 4300, views: 71000),
+  _w(id: 'football_3d_006', title: 'Captain', category: WallpaperCategory.art3d, subject: 'Captain Armband', imagePath: '$_p/3d/football_3d_006.jpg', tags: ['live', 'animated', '3d', 'captain', 'armband'], subtitle: 'The Armband', downloads: 14000, likes: 3300, views: 54000),
+  _w(id: 'football_3d_007', title: 'Final Night', category: WallpaperCategory.art3d, subject: 'UCL Final', imagePath: '$_p/3d/football_3d_007.jpg', tags: ['live', 'animated', '3d', 'champions league', 'final'], subtitle: 'European Glory', downloads: 26000, likes: 6100, views: 99000),
+  _w(id: 'football_3d_008', title: 'World Champions', category: WallpaperCategory.art3d, subject: 'World Cup Final', imagePath: '$_p/3d/football_3d_008.jpg', tags: ['live', 'animated', '3d', 'world cup', 'final'], subtitle: 'Final Whistle', downloads: 24000, likes: 5800, views: 92000),
+  _w(id: 'football_3d_009', title: 'Top Corner', category: WallpaperCategory.art3d, subject: 'Goal', imagePath: '$_p/3d/football_3d_009.jpg', tags: ['live', 'animated', '3d', 'goal', 'strike'], subtitle: 'Unstoppable', downloads: 16000, likes: 3900, views: 63000),
+  _w(id: 'football_3d_010', title: 'Last Kick', category: WallpaperCategory.art3d, subject: 'Penalty', imagePath: '$_p/3d/football_3d_010.jpg', tags: ['live', 'animated', '3d', 'penalty'], subtitle: 'Sudden Death', trending: true, downloads: 15000, likes: 3600, views: 58000),
 ];
 
 class WallpaperRepository {
@@ -205,7 +205,7 @@ class WallpaperRepository {
 
   List<Wallpaper> byCategory(WallpaperCategory category) {
     if (category == WallpaperCategory.art3d) {
-      return wallpaperCatalog.where((w) => w.animated || w.tags.contains('3d')).toList();
+      return wallpaperCatalog.where((w) => w.animated || w.tags.contains('live') || w.tags.contains('3d')).toList();
     }
     if (category == WallpaperCategory.leagues) {
       return wallpaperCatalog

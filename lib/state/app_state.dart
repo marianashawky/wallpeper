@@ -71,12 +71,17 @@ class AppState extends ChangeNotifier {
   }
 
   Future<String?> setWallpaper(Wallpaper wallpaper) async {
-    final ok = await actions.setWallpaper(wallpaper);
-    if (!ok) return 'Saved to gallery. Set it from system wallpaper picker.';
+    final status = await actions.setWallpaper(wallpaper);
+    if (status == 'fail') {
+      return 'Could not set wallpaper. Try again from the system picker.';
+    }
     await store.addDownload(wallpaper.id);
     downloads = store.downloads;
     notifyListeners();
-    return null;
+    if (status == 'picker') {
+      return 'On the next screen choose Football Live so it stays animated.';
+    }
+    return wallpaper.animated ? 'Live wallpaper updated.' : null;
   }
 
   Future<void> rememberSearch(String query) async {

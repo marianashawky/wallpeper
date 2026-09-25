@@ -39,7 +39,7 @@ class WallpaperCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              WallpaperVisual(wallpaper: wallpaper),
+              WallpaperVisual(wallpaper: wallpaper, lite: true),
               const DecoratedBox(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -56,7 +56,7 @@ class WallpaperCard extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(color: AppColors.accent, borderRadius: BorderRadius.circular(10)),
-                    child: const Text('3D', style: TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.w800)),
+                    child: const Text('LIVE', style: TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.w800)),
                   ),
                 ),
               if (rank != null)
@@ -133,7 +133,7 @@ class HeroWallpaperCard extends StatelessWidget {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              WallpaperVisual(wallpaper: wallpaper),
+              WallpaperVisual(wallpaper: wallpaper, lite: true),
             const DecoratedBox(
               decoration: BoxDecoration(
                 gradient: LinearGradient(

@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
 
 import '../../data/models/wallpaper.dart';
-import 'animated_3d_overlay.dart';
+import 'live_wallpaper_visual.dart';
 
 class WallpaperVisual extends StatelessWidget {
   const WallpaperVisual({
     super.key,
     required this.wallpaper,
     this.fit = BoxFit.cover,
+    this.lite = false,
   });
 
   final Wallpaper wallpaper;
   final BoxFit fit;
+  final bool lite;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Image.asset(wallpaper.imagePath, fit: fit, gaplessPlayback: true),
-        if (wallpaper.animated) IgnorePointer(child: Animated3dOverlay(seed: wallpaper.id.hashCode)),
-      ],
-    );
+    if (wallpaper.animated) {
+      return LiveWallpaperVisual(
+        imagePath: wallpaper.imagePath,
+        seed: wallpaper.id.hashCode,
+        lite: lite,
+      );
+    }
+    return Image.asset(wallpaper.imagePath, fit: fit, gaplessPlayback: true);
   }
 }

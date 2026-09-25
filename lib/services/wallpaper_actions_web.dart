@@ -23,5 +23,5 @@ class WallpaperActions {
     );
   }
 
-  Future<bool> setWallpaper(Wallpaper wallpaper) async => false;
+  Future<String> setWallpaper(Wallpaper wallpaper) async => 'fail';
 }

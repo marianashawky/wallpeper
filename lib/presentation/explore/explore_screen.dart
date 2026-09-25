@@ -4,7 +4,7 @@ import '../../core/theme/app_colors.dart';
 import '../../data/models/wallpaper.dart';
 import '../../state/app_scope.dart';
 import '../category/category_screen.dart';
-import '../widgets/animated_3d_overlay.dart';
+import '../widgets/live_wallpaper_visual.dart';
 import '../widgets/ui_bits.dart';
 import '../widgets/wallpaper_cards.dart';
 
@@ -54,15 +54,20 @@ class ExploreScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: AppColors.card,
                           image: DecorationImage(
-                            image: AssetImage(cat == WallpaperCategory.art3d
-                                ? 'assets/images/wallpapers/3d/football_3d_001.jpg'
-                                : cat.thumbnail),
+                            image: AssetImage(cat.thumbnail),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(Colors.black.withValues(alpha: 0.55), BlendMode.darken),
                           ),
                         ),
                       ),
-                      if (cat == WallpaperCategory.art3d) const IgnorePointer(child: Animated3dOverlay(seed: 42)),
+                      if (cat == WallpaperCategory.art3d)
+                        const IgnorePointer(
+                          child: LiveWallpaperVisual(
+                            imagePath: 'assets/images/categories/3d.jpg',
+                            seed: 42,
+                            lite: true,
+                          ),
+                        ),
                       Padding(
                         padding: const EdgeInsets.all(16),
                         child: Column(

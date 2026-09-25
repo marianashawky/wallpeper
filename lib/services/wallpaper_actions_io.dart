@@ -38,14 +38,14 @@ class WallpaperActions {
     await Share.shareXFiles([XFile(file.path)], text: '${wallpaper.title} — Football Wallpaper');
   }
 
-  Future<bool> setWallpaper(Wallpaper wallpaper) async {
-    if (!Platform.isAndroid) return false;
+  Future<String> setWallpaper(Wallpaper wallpaper) async {
+    if (!Platform.isAndroid) return 'fail';
     final file = await _materialize(wallpaper);
     try {
-      final ok = await _channel.invokeMethod<bool>('setWallpaper', {'path': file.path});
-      return ok ?? false;
+      final method = wallpaper.animated ? 'setLiveWallpaper' : 'setWallpaper';
+      return await _channel.invokeMethod<String>(method, {'path': file.path}) ?? 'fail';
     } catch (_) {
-      return false;
+      return 'fail';
     }
   }
 }

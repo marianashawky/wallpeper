@@ -6,7 +6,7 @@ enum WallpaperCategory {
   leagues('Leagues', 'leagues', 'assets/images/categories/leagues.jpg'),
   legends('Legends', 'legends', 'assets/images/categories/legends.jpg'),
   stadiums('Stadiums', 'stadiums', 'assets/images/categories/stadiums.jpg'),
-  art3d('3D Art', '3d', 'assets/images/categories/3d.jpg'),
+  art3d('Live', '3d', 'assets/images/categories/3d.jpg'),
   minimal('Minimal', 'minimal', 'assets/images/categories/minimal.jpg'),
   quotes('Quotes', 'quotes', 'assets/images/categories/quotes.jpg');
 
