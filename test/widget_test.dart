@@ -1,21 +1,31 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:football_wallpaper/data/catalog/wallpaper_catalog.dart';
-import 'package:football_wallpaper/data/models/wallpaper.dart';
+import 'package:football_wallpaper/core/constants/app_info.dart';
+import 'package:football_wallpaper/features/wallpapers/data/mock_wallpaper_repository.dart';
+import 'package:football_wallpaper/features/wallpapers/domain/wallpaper.dart';
 
 void main() {
-  test('each player has 5 wallpapers', () {
-    final players = wallpaperCatalog.where((w) => w.category == WallpaperCategory.players);
-    final bySubject = <String, int>{};
-    for (final w in players) {
-      bySubject[w.subject] = (bySubject[w.subject] ?? 0) + 1;
-    }
-    expect(bySubject.length, 30);
-    expect(bySubject.values.every((count) => count == 5), isTrue);
-    expect(players.length, 150);
-  });
+  test('catalog has no football collection', () async {
+    final repository = MockWallpaperRepository();
+    final categories = await repository.loadCategories();
+    expect(categories.map((category) => category.id), containsAll([
+      CategoryIds.live,
+      CategoryIds.anime,
+      CategoryIds.nature,
+      CategoryIds.cars,
+      CategoryIds.gaming,
+      CategoryIds.space,
+      CategoryIds.abstract,
+      CategoryIds.minimal,
+      CategoryIds.technology,
+      CategoryIds.dark,
+    ]));
+    expect(categories.any((category) => category.id == 'football'), isFalse);
 
-  test('every wallpaper file path is unique', () {
-    final paths = wallpaperCatalog.map((w) => w.imagePath).toList();
-    expect(paths.toSet().length, paths.length);
+    final all = await repository.search('messi');
+    expect(all, isEmpty);
+
+    final live = await repository.loadCategory(CategoryIds.live, limit: 100);
+    expect(live.items, isNotEmpty);
+    expect(live.items.every((wallpaper) => wallpaper.type != WallpaperType.static), isTrue);
   });
 }

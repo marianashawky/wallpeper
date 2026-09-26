@@ -22,7 +22,8 @@ class MainActivity : FlutterActivity() {
                     }
                     "setLiveWallpaper" -> {
                         val path = call.argument<String>("path")
-                        result.success(if (path.isNullOrEmpty()) "fail" else applyLive(path))
+                        val kind = call.argument<String>("kind") ?: "motion"
+                        result.success(if (path.isNullOrEmpty()) "fail" else applyLive(path, kind))
                     }
                     else -> result.notImplemented()
                 }
@@ -53,31 +54,34 @@ class MainActivity : FlutterActivity() {
         }
     }
 
-    private fun applyLive(path: String): String {
+    private fun applyLive(path: String, kind: String): String {
         return try {
-            val dest = File(filesDir, "live_current.jpg")
+            val video = kind == "video"
+            val dest = File(filesDir, if (video) "live_current.mp4" else "live_current.jpg")
             File(path).copyTo(dest, overwrite = true)
-            getSharedPreferences(LiveFootballWallpaperService.PREFS, MODE_PRIVATE)
+            File(filesDir, if (video) "live_current.jpg" else "live_current.mp4").delete()
+            getSharedPreferences(LuminaWallpaperService.PREFS, MODE_PRIVATE)
                 .edit()
-                .putString(LiveFootballWallpaperService.KEY_PATH, dest.absolutePath)
+                .putString(LuminaWallpaperService.KEY_PATH, dest.absolutePath)
+                .putString(LuminaWallpaperService.KEY_KIND, if (video) "video" else "motion")
                 .apply()
             sendBroadcast(
-                Intent(LiveFootballWallpaperService.ACTION_RELOAD).setPackage(packageName),
+                Intent(LuminaWallpaperService.ACTION_RELOAD).setPackage(packageName),
             )
             val info = WallpaperManager.getInstance(this).wallpaperInfo
-            val alreadyOurs = info?.component?.className == LiveFootballWallpaperService::class.java.name
+            val alreadyOurs = info?.component?.className == LuminaWallpaperService::class.java.name
             if (alreadyOurs) return "ok"
             val intent = Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER).apply {
                 putExtra(
                     WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
-                    ComponentName(this@MainActivity, LiveFootballWallpaperService::class.java),
+                    ComponentName(this@MainActivity, LuminaWallpaperService::class.java),
                 )
             }
             try {
                 startActivity(intent)
                 "picker"
             } catch (_: Exception) {
-                applyStatic(dest.absolutePath)
+                if (video) "fail" else applyStatic(dest.absolutePath)
             }
         } catch (_: Exception) {
             "fail"

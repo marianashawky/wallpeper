@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -59,5 +61,36 @@ class AdService {
     );
     await ad.show();
     _interstitial = null;
+  }
+
+  Future<bool> showRewarded() {
+    final completer = Completer<bool>();
+    RewardedAd.load(
+      adUnitId: AdsConstants.rewardedAdUnitId,
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              ad.dispose();
+              if (!completer.isCompleted) completer.complete(false);
+            },
+            onAdFailedToShowFullScreenContent: (ad, error) {
+              ad.dispose();
+              if (!completer.isCompleted) completer.complete(false);
+            },
+          );
+          ad.show(
+            onUserEarnedReward: (ad, reward) {
+              if (!completer.isCompleted) completer.complete(true);
+            },
+          );
+        },
+        onAdFailedToLoad: (error) {
+          if (!completer.isCompleted) completer.complete(false);
+        },
+      ),
+    );
+    return completer.future;
   }
 }

@@ -6,4 +6,6 @@ class AdService {
   Widget buildBanner() => const SizedBox.shrink();
 
   Future<void> maybeShowInterstitial() async {}
+
+  Future<bool> showRewarded() async => false;
 }
