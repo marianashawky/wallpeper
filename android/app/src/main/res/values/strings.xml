@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lumina خلفيات Live</string>
-    <string name="live_wallpaper_label">Lumina خلفيات Live</string>
-    <string name="live_wallpaper_description">خلفيات لايف ومتحركة وفيديو للموبايل</string>
+    <string name="live_wallpaper_label">Football Live</string>
+    <string name="live_wallpaper_description">Animated football wallpaper</string>
 </resources>

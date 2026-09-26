@@ -1,11 +1,11 @@
 {
-    "name": "Lumina خلفيات Live",
-    "short_name": "Lumina",
+    "name": "football_wallpaper",
+    "short_name": "football_wallpaper",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#07080B",
-    "theme_color": "#07080B",
-    "description": "Wallpapers for stills, motion, and video.",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

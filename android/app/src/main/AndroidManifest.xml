@@ -8,14 +8,14 @@
     <uses-feature android:name="android.software.live_wallpaper" android:required="false"/>
 
     <application
-        android:label="@string/app_name"
+        android:label="Football Wallpaper"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3347511713"/>
         <service
-            android:name=".LuminaWallpaperService"
+            android:name=".LiveFootballWallpaperService"
             android:exported="true"
             android:label="@string/live_wallpaper_label"
             android:permission="android.permission.BIND_WALLPAPER">

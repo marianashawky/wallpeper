@@ -2,23 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'app/app_scope.dart';
-import 'app/lumen_app.dart';
 import 'core/ads/ad_service.dart';
+import 'core/theme/app_theme.dart';
 import 'data/local/local_store.dart';
-import 'features/favorites/presentation/favorites_controller.dart';
-import 'features/search/presentation/search_history_controller.dart';
-import 'features/settings/data/cache_cleaner.dart';
-import 'features/settings/presentation/settings_controller.dart';
-import 'features/wallpapers/data/download_service.dart';
-import 'features/wallpapers/data/mock_wallpaper_repository.dart';
-import 'features/wallpapers/data/share_service.dart';
-import 'features/wallpapers/data/wallpaper_setter_impl.dart';
-import 'features/wallpapers/domain/premium_gate.dart';
+import 'presentation/splash/splash_screen.dart';
+import 'state/app_scope.dart';
+import 'state/app_state.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.light,
+  ));
 
   final prefs = await SharedPreferences.getInstance();
   final store = LocalStore(prefs);
@@ -26,31 +23,30 @@ Future<void> main() async {
   try {
     await ads.initialize();
   } catch (_) {
-    // Ads stay optional when Play services are missing.
+    // Ads stay optional if Play services are missing.
   }
 
-  final favorites = FavoritesController(store);
-  final settings = SettingsController(store);
-  final searchHistory = SearchHistoryController(store);
-  await Future.wait([
-    favorites.load(),
-    settings.load(),
-    searchHistory.load(),
-  ]);
+  final state = AppState(store: store, ads: ads);
+  await state.load();
 
-  final deps = AppDependencies(
-    repository: MockWallpaperRepository(),
-    favorites: favorites,
-    settings: settings,
-    searchHistory: searchHistory,
-    downloads: DownloadService(store: store),
-    share: ShareService(),
-    setter: PlatformWallpaperSetter(),
-    ads: ads,
-    premium: const PremiumGate(),
-    cache: CacheCleaner(),
-    store: store,
-  );
+  runApp(FootballWallpaperApp(state: state));
+}
 
-  runApp(LumenApp(deps: deps));
+class FootballWallpaperApp extends StatelessWidget {
+  const FootballWallpaperApp({super.key, required this.state});
+
+  final AppState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppStateScope(
+      state: state,
+      child: MaterialApp(
+        title: 'Football Wallpaper',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.dark(),
+        home: SplashScreen(onboardingDone: state.store.onboardingDone),
+      ),
+    );
+  }
 }

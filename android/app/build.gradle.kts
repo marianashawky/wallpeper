@@ -15,7 +15,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.lumina.wallpapers"
+        applicationId = "com.footballwallpaper.football_wallpaper"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
